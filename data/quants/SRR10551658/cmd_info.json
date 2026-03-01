@@ -1,0 +1,10 @@
+{
+    "salmon_version": "1.10.2",
+    "index": "/home/mahnoorn/scratch/BINF6110/Bulk-Transcriptomics-Differential-Expression-Analysis/data/salmon_index",
+    "libType": "A",
+    "unmatedReads": "/home/mahnoorn/scratch/BINF6110/Bulk-Transcriptomics-Differential-Expression-Analysis/data/raw/SRR10551658.fastq.gz",
+    "validateMappings": [],
+    "threads": "8",
+    "output": "/home/mahnoorn/scratch/BINF6110/Bulk-Transcriptomics-Differential-Expression-Analysis/data/quants/SRR10551658",
+    "auxDir": "aux_info"
+}

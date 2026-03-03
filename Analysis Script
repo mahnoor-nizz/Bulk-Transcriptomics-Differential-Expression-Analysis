@@ -39,6 +39,7 @@ for SAMPLE in "${SAMPLES[@]}"; do
         -i data/salmon_index \
         -l A \
         -r data/raw/${SAMPLE}.fastq.gz \
+	    --gcBias \
         --validateMappings \
         -p 8 \
         -o /data/quants/${SAMPLE}

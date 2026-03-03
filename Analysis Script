@@ -1,1 +1,45 @@
+#!/bin/bash
 
+#Everything in this script was done through compute canada's narval
+
+mkdir -p data/raw data/salmon_index data/quants qc  results
+
+module load sra-toolkit
+module load fastqc/0.12.1
+module load salmon/1.10.2
+
+#SRA fastq files downloaded using accession numbers SRR10551657 to SRR10551665
+
+fastqc /raw/*.fastq.gz \
+    --outdir ~/scratch/BINF6110/Bulk-Transcriptomics-Differential-Expression-Analysis/qc \
+    --threads 4
+
+# Multiqc module not available on narval so qc data was downloaded and multiqc was run locally using
+#  multiqc /qc/ -o /qc/multiqc_report
+
+cd data
+#downloaded reference transcriptome (different from one used in original paper)
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_rna.fna.gz
+cd ..
+
+
+
+salmon index \
+    -t data/GCF_000146045.2_R64_rna.fna.gz \
+    -i data/salmon_index \
+    -p 4
+
+echo "Done!"
+
+
+SAMPLES=(SRR10551665 SRR10551664 SRR10551663 SRR10551662 SRR10551661 SRR10551660 SRR10551659 SRR10551658 SRR10551657)
+
+for SAMPLE in "${SAMPLES[@]}"; do
+    salmon quant \
+        -i data/salmon_index \
+        -l A \
+        -r data/raw/${SAMPLE}.fastq.gz \
+        --validateMappings \
+        -p 8 \
+        -o /data/quants/${SAMPLE}
+done

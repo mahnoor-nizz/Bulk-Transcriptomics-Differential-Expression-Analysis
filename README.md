@@ -89,6 +89,8 @@ Gene Ontology Biological Process (GO BP) and KEGG pathway ORA were performed wit
 
 ### Overall Data Structure
 
+Principal component analysis of variance-stabilized read counts revealed clear separation of the three biofilm stages (Figure 1). PC1 (67% variance explained) separated the Early and Mature stages at opposite extremes, consistent with the large distance between the earliest and latest stages of biofilm development. Thin biofilm samples clustered in an intermediate position along PC1 but were clearly separated from both Early and Mature samples along PC2 (26% variance explained), suggesting Thin biofilm has a partially distinct transcriptional profile rather than just being a intermediate. Within-group replicates clustered tightly, indicating high reproducibility across biological triplicates and supporting the validity of the downstream differential expression analysis.
+
 ![Alt text for the image](https://github.com/mahnoor-nizz/Bulk-Transcriptomics-Differential-Expression-Analysis/blob/main/Figures/PCA2.png)
 
 **Figure 1.** PCA of variance-stabilized counts across nine *S. cerevisiae* biofilm samples. Each point represents one biological replicate; colours indicate biofilm stage (Early = red, Thin = green, Mature = blue). PC1 and PC2 together explain 93% of variance.

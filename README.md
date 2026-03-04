@@ -13,6 +13,14 @@ BINF 6110 Assignment 2.  Differential expression analysis, functional annotation
 
 ## Introduction
 
+*Saccharomyces cerevisiae* is a yeast strain that produces a surface biofilm known as a velum during the biological aging of certain wines, particularly sherry wines. This biofilm develops on wine surfaces that are open to the air and play a crucial role in shaping the properties of the final product by consuming ethanol and producing acetaldehyde and acetals under oxidative, nutrient-deficient conditions (Mardanov et al., 2020; Legras et al., 2016).
+
+The velum undergoes distinct morphological stages, **Early**, **Thin**, and **Mature**, each associated with different metabolic demands. Understanding the transcriptional basis of these transitions is valuable both for wine making and for research into *S. cerevisiae* stress adaptation, carbon source switching, and biofilm architecture. As glucose is progressively depleted from Early to Mature biofilm (Mardanov et al., 2020), cells are expected to shift from fermentative to oxidative metabolism, a transition controlled by large-scale changes in gene expression.
+
+Bulk RNA sequencing (RNA-seq) is a method used for measuring differential gene expression across conditions. RNA-seq quantifies the abundance of all transcripts in a sample simultaneously, providing a genome-wide snapshot of the transcriptome (Wang et al., 2009). Here, **Salmon** was used for quasi-mapping-based quantification (Patro et al., 2017), which employs selective alignment against the reference transcriptome to produce accurate transcript-level counts without the computational cost of full alignment. This why it was selected over splice aware aligners like STAR or minimap2 which take longer to run and require an extra step to get gene expression counts. Counts were then imported into R with **tximport** (Soneson et al., 2015) for transcript-to-gene aggregation, and differential expression was performed using **DESeq2** (Love et al., 2014).
+
+DESeq2 was selected because it is the most widely adopted tool for bulk transcriptomics DE analysis, implements the median-of-ratios normalization method to account for differences in RNA composition across samples, and applies empirical Bayes shrinkage of log-fold change (LFC) estimates, which is particularly important for low-count genes common in studies with only three replicates per group (Love et al., 2014). LFC shrinkage was applied using **apeglm** (Zhu et al., 2019) to reduce noise in effect size estimates. Functional enrichment was performed using **clusterProfiler** (Wu et al., 2021) for both Gene Ontology (GO) Biological Process Over-Representation Analysis (ORA) and KEGG pathway ORA, allowing biologically interpretable categorization of differentially expressed gene (DEG) sets.
+
 
 ---
 

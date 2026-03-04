@@ -99,7 +99,7 @@ Principal component analysis of variance-stabilized read counts revealed clear s
 
 ### Differential Expression Analysis
 
-DESeq2 identified substantial transcriptional remodelling across all three pairwise comparisons, with 5,963 genes detected with non-zero counts:
+DESeq2 identified substantial transcriptional remodelling across all three pairwise comparisons, with 5,963 genes detected with non-zero counts. The number of DEGs (|log₂FC| > 1, adjusted p < 0.05) increased with developmental distance between the compared stages:
 
 | Comparison | Total DEGs | Upregulated | Downregulated |
 |------------|-----------|-------------|---------------|

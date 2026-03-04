@@ -13,13 +13,13 @@ BINF 6110 Assignment 2.  Differential expression analysis, functional annotation
 
 ## Introduction
 
-*Saccharomyces cerevisiae* is a yeast strain that produces a surface biofilm known as a velum during the biological aging of certain wines, particularly sherry wines. This biofilm develops on wine surfaces that are open to the air and play a crucial role in shaping the properties of the final product by consuming ethanol and producing acetaldehyde and acetals under oxidative, nutrient-deficient conditions (Mardanov et al., 2020; Legras et al., 2016).
+*Saccharomyces cerevisiae* is a yeast strain that produces a surface biofilm known as a velum during the biological aging of certain wines, particularly sherry wines. This biofilm develops on wine surfaces that are open to the air and play a crucial role in shaping the properties of the final product by consuming ethanol and producing acetaldehyde and acetals under oxidative, nutrient-deficient conditions [^9][^5].
 
-The velum undergoes distinct morphological stages, **Early**, **Thin**, and **Mature**, each associated with different metabolic demands. Understanding the transcriptional basis of these transitions is valuable both for wine making and for research into *S. cerevisiae* stress adaptation, carbon source switching, and biofilm architecture. As glucose is progressively depleted from Early to Mature biofilm (Mardanov et al., 2020), cells are expected to shift from fermentative to oxidative metabolism, a transition controlled by large-scale changes in gene expression.
+The velum undergoes distinct morphological stages, **Early**, **Thin**, and **Mature**, each associated with different metabolic demands. Understanding the transcriptional basis of these transitions is valuable both for wine making and for research into *S. cerevisiae* stress adaptation, carbon source switching, and biofilm architecture. As glucose is progressively depleted from Early to Mature biofilm[^9], cells are expected to shift from fermentative to oxidative metabolism, a transition controlled by large-scale changes in gene expression.
 
-Bulk RNA sequencing (RNA-seq) is a method used for measuring differential gene expression across conditions. RNA-seq quantifies the abundance of all transcripts in a sample simultaneously, providing a genome-wide snapshot of the transcriptome (Wang et al., 2009). Here, **Salmon** was used for quasi-mapping-based quantification (Patro et al., 2017), which employs selective alignment against the reference transcriptome to produce accurate transcript-level counts without the computational cost of full alignment. This why it was selected over splice aware aligners like **STAR** or **minimap2** which take longer to run and require an extra step to get gene expression counts. Counts were then imported into R with **tximport** (Soneson et al., 2015) for transcript-to-gene aggregation, and differential expression was performed using **DESeq2** (Love et al., 2014).
+Bulk RNA sequencing (RNA-seq) is a method used for measuring differential gene expression across conditions. RNA-seq quantifies the abundance of all transcripts in a sample simultaneously, providing a genome-wide snapshot of the transcriptome.[^16] Here, **Salmon** was used for quasi-mapping-based quantification[^12], which employs selective alignment against the reference transcriptome to produce accurate transcript-level counts without the computational cost of full alignment. This why it was selected over splice aware aligners like **STAR** or **minimap2** which take longer to run and require an extra step to get gene expression counts. Counts were then imported into R with **tximport**[^7] for transcript-to-gene aggregation, and differential expression was performed using **DESeq2**.[^7]
 
-DESeq2 was selected because it is the most widely adopted tool for bulk transcriptomics DE analysis, implements the median-of-ratios normalization method to account for differences in RNA composition across samples, and applies empirical Bayes shrinkage of log-fold change (LFC) estimates, which is particularly important for low-count genes common in studies with only three replicates per group (Love et al., 2014). LFC shrinkage was applied using **apeglm** (Zhu et al., 2019) to reduce noise in effect size estimates. Functional enrichment was performed using **clusterProfiler** (Wu et al., 2021) for both Gene Ontology (GO) Biological Process Over-Representation Analysis (ORA) and KEGG pathway ORA, allowing biologically interpretable categorization of differentially expressed gene (DEG) sets.
+DESeq2 was selected because it is the most widely adopted tool for bulk transcriptomics DE analysis, implements the median-of-ratios normalization method to account for differences in RNA composition across samples, and applies empirical Bayes shrinkage of log-fold change (LFC) estimates, which is particularly important for low-count genes common in studies with only three replicates per group.[^7] LFC shrinkage was applied using **apeglm**[^21] to reduce noise in effect size estimates. Functional enrichment was performed using **clusterProfiler**[^17] for both Gene Ontology (GO) Biological Process Over-Representation Analysis (ORA) and KEGG pathway ORA, allowing biologically interpretable categorization of differentially expressed gene (DEG) sets.
 
 
 ---
@@ -28,7 +28,7 @@ DESeq2 was selected because it is the most widely adopted tool for bulk transcri
 
 ### Data
 
-Raw single-end RNA-seq reads for nine samples (three replicates × three biofilm stages: Early, Thin, and Mature) were obtained from NCBI SRA (BioProject PRJNA592304; Mardanov et al., 2020). Sample accessions are listed below:
+Raw single-end RNA-seq reads for nine samples (three replicates × three biofilm stages: Early, Thin, and Mature) were obtained from NCBI SRA (BioProject PRJNA592304[^9]). Sample accessions are listed below:
 
 | Stage | Sample ID | SRA Accession |
 |-------|-----------|---------------|
@@ -61,11 +61,11 @@ Raw single-end RNA-seq reads for nine samples (three replicates × three biofilm
 
 ### Download and Quality Control
 
-Reads were downloaded from the NCBI SRA using `fasterq-dump` from the SRA Toolkit v3.0.9 and compressed with `gzip`. Quality control was assessed with **FastQC** v0.12.1 (Andrews, 2010).
+Reads were downloaded from the NCBI SRA using `fasterq-dump` from the SRA Toolkit v3.0.9 and compressed with `gzip`. Quality control was assessed with **FastQC** v0.12.1.[^1]
 
 ### Reference Transcriptome and Indexing
 
-The *S. cerevisiae* reference transcriptome (GCF_000146045.2, R64 assembly) was downloaded from NCBI and indexed with **Salmon** v1.10.2 (Patro et al., 2017):
+The *S. cerevisiae* reference transcriptome (GCF_000146045.2, R64 assembly) was downloaded from NCBI and indexed with **Salmon** v1.10.2[^12]:
 
 ### Quantification
 
@@ -85,7 +85,7 @@ done
 
 ### Differential Expression Analysis in R
 
-Salmon output was imported into R using **tximport** v1.38.2  (Soneson et al., 2015). A transcript-to-gene mapping was generated from the R64 GTF file using `makeTxDbFromGFF` from the **GenomicFeatures** v1.62.0 package (Lawrence et al., 2013). Samples were modelled with a single-factor design (`~stage`) in **DESeq2** v1.50.2 (Love et al., 2014), with `Early` as the reference level. To obtain the Mature vs. Thin contrast, the reference was relevelled to `Thin` and DESeq2 was re-run. Pairwise contrasts were extracted with `results()` at α = 0.05. Log-fold change shrinkage was applied with **apeglm** using `lfcShrink()` (Zhu et al., 2018). DEGs were defined as genes with |log₂FC| > 1 and adjusted p-value < 0.05 (Benjamini–Hochberg correction).
+Salmon output was imported into R using **tximport** v1.38.2.[^14][^7] A transcript-to-gene mapping was generated from the R64 GTF file using `makeTxDbFromGFF` from the **GenomicFeatures** v1.62.0 package.[^4] Samples were modelled with a single-factor design (`~stage`) in **DESeq2** v1.50.2 (Love et al., 2014), with `Early` as the reference level. To obtain the Mature vs. Thin contrast, the reference was relevelled to `Thin` and DESeq2 was re-run. Pairwise contrasts were extracted with `results()` at α = 0.05. Log-fold change shrinkage was applied with **apeglm** using `lfcShrink()` [^21]. DEGs were defined as genes with |log₂FC| > 1 and adjusted p-value < 0.05 (Benjamini–Hochberg correction).
 
 ```r
 dds <- DESeqDataSetFromTximport(txi, sample_info, ~stage)
@@ -96,11 +96,11 @@ LFC_tve <- lfcShrink(dds, coef = "stage_Thin_vs_Early", type = "apeglm")
 
 ### Visualization
 
-**PCA** was performed on variance-stabilized counts (VST) using `plotPCA` from DESeq2. **Volcano plots** were generated with **ggplot2** v4.0.2 (Wickham, 2016) and **ggrepel** v0.9.7, labelling the top 5 up- and down-regulated genes (by adjusted p-value) in each comparison. A **heatmap** of the 30 most significant genes (minimum adjusted p-value across all three comparisons) was produced with **pheatmap** v1.0.13  using row-scaled VST counts.
+**PCA** was performed on variance-stabilized counts (VST) using `plotPCA` from DESeq2. **Volcano plots** were generated with **ggplot2** v4.0.2[^17] and **ggrepel** v0.9.7, labelling the top 5 up- and down-regulated genes (by adjusted p-value) in each comparison. A **heatmap** of the 30 most significant genes (minimum adjusted p-value across all three comparisons) was produced with **pheatmap** v1.0.13  using row-scaled VST counts.
 
 ### Functional Enrichment
 
-Gene Ontology Biological Process (GO BP) and KEGG pathway ORA were performed with `compareCluster` from **clusterProfiler** v4.18.4 (Wu et al., 2021), testing upregulated and downregulated DEGs separately against the background of all expressed genes. GO results were simplified with a Jaccard similarity cutoff of 0.7 using `clusterProfiler::simplify`. Dot plots showing the top 10 enriched terms per cluster were generated with `dotplot` from **enrichplot** v1.30.4 (Yu, 2022). KEGG queries used organism code `sce` (*S. cerevisiae*). Multiple testing correction was performed using the Benjamini–Hochberg method (p.adjust < 0.05, q-value < 0.2).
+Gene Ontology Biological Process (GO BP) and KEGG pathway ORA were performed with `compareCluster` from **clusterProfiler** v4.18.4[^18], testing upregulated and downregulated DEGs separately against the background of all expressed genes. GO results were simplified with a Jaccard similarity cutoff of 0.7 using `clusterProfiler::simplify`. Dot plots showing the top 10 enriched terms per cluster were generated with `dotplot` from **enrichplot** v1.30.4.[^19] KEGG queries used organism code `sce` (*S. cerevisiae*). Multiple testing correction was performed using the Benjamini–Hochberg method (p.adjust < 0.05, q-value < 0.2).
 
 ## Results
 
@@ -144,15 +144,15 @@ Hierarchical clustering of the 30 most significant genes (ranked by minimum adju
 
 ### Functional Enrichment: Gene Ontology ORA
 
-In the **Thin vs. Early** comparison, upregulated genes were most significantly enriched for **cytoplasmic translation** (p.adjust < 1×e^-10), as well as **cellular respiration** and **proton transmembrane transport**. Downregulated genes were enriched for carbohydrate catabolism terms including **glycolytic process**, **monocarboxylic acid metabolic process**, and **small molecule catabolic process**. This suggests that as cells transition from Early to Thin biofilm, they upregulate mitochondrial oxidative capacity and ribosome biogenesis while reducing fermentation (Moreno-García et al 2017).
+In the **Thin vs. Early** comparison, upregulated genes were most significantly enriched for **cytoplasmic translation** (p.adjust < 1×e^-10), as well as **cellular respiration** and **proton transmembrane transport**. Downregulated genes were enriched for carbohydrate catabolism terms including **glycolytic process**, **monocarboxylic acid metabolic process**, and **small molecule catabolic process**. This suggests that as cells transition from Early to Thin biofilm, they upregulate mitochondrial oxidative capacity and ribosome biogenesis while reducing fermentation[^24].
 
 In the **Mature vs. Early** comparison, upregulated genes were enriched for **mitochondrion organization**, **mitochondrial translation**, and **mitochondrial gene expression**, terms absent or less prominent in the Thin vs. Early comparison, suggesting a stronger commitment to oxidative metabolism by the Mature stage. Downregulated genes in this comparison showed particularly large gene ratios and low p.adj for **transmembrane transport**, **monocarboxylic acid metabolic process**, and **lipid metabolic process**, consistent with almost complete glucose exhaustion at 109 days and shutdown of fermentation pathways as evident in the metata provided by Mardanov et al. (2020)
 
-In the **Mature vs. Thin** comparison, upregulated genes were enriched for **carbohydrate biosynthetic process**, **energy reserve metabolic process**, and **response to abiotic stimulus**, the latter consistent with oxidative stress adaptation at the biofilm surface. (Moreno-García et al. 2017). Downregulated genes showed enrichment for **monocarboxylic acid metabolic process**, **transmembrane transport**, **lipid biosynthetic process**, and a handful more.
+In the **Mature vs. Thin** comparison, upregulated genes were enriched for **carbohydrate biosynthetic process**, **energy reserve metabolic process**, and **response to abiotic stimulus**, the latter consistent with oxidative stress adaptation at the biofilm surface.[^24] Downregulated genes showed enrichment for **monocarboxylic acid metabolic process**, **transmembrane transport**, **lipid biosynthetic process**, and a handful more.
 
 
 ![Alt text for the image](https://github.com/mahnoor-nizz/Bulk-Transcriptomics-Differential-Expression-Analysis/blob/main/Figures/GO%20ORA.png)
-**Figure 4.** GO Biological Process ORA dot plots for each pairwise comparison. Dot size reflects the gene ratio (proportion of DEGs in the GO term); dot colour indicates adjusted p-value. Up to 10 terms are shown per cluster after redundancy reduction (Jaccard similarity cutoff = 0.7).
+**Figure 4.** GO Biological Process ORA dot plots for each pairwise comparison. Dot size reflects the gene ratio (proportion of DEGs in the GO term); dot colour indicates adjusted p-value. Up to 10 terms are shown per cluster after redundancy reduction (cutoff = 0.7).
 
 
 ---
@@ -163,7 +163,7 @@ KEGG pathway ORA confirmed and extended the GO results (Figure 5). Across compar
 
 Among downregulated genes, the **Biosynthesis of secondary metabolites** pathway was consistently and strongly enriched across all comparisons. **Glycolysis / Gluconeogenesis**, **Carbon metabolism**, **Fatty acid metabolism**, and **Biosynthesis of amino acids** were enriched among downregulated genes in the Mature vs. Early comparison, suggesting the slowing of growth, sugar fermentation, and amino acid production. 
 
-In the **Mature vs. Thin** comparison, **Starch and sucrose metabolism** emerged as the top upregulated pathway, while **Biosynthesis of secondary metabolites** remained the top downregulated pathway. The upregulation of carbohydrate storage pathways (including glycogen and trehalose biosynthesis from the GO analysis) at the Mature stage may represent a stress survival strategy under extremely low carbon availability (Francois & Parrou 2001).
+In the **Mature vs. Thin** comparison, **Starch and sucrose metabolism** emerged as the top upregulated pathway, while **Biosynthesis of secondary metabolites** remained the top downregulated pathway. The upregulation of carbohydrate storage pathways (including glycogen and trehalose biosynthesis from the GO analysis) at the Mature stage may represent a stress survival strategy under extremely low carbon availability [^3].
 
 
 ![Alt text for the image](https://github.com/mahnoor-nizz/Bulk-Transcriptomics-Differential-Expression-Analysis/blob/main/Figures/KEGG%20ORA.png)
@@ -175,7 +175,7 @@ In the **Mature vs. Thin** comparison, **Starch and sucrose metabolism** emerged
 
 This analysis reveals that the coordinated and progressive transcriptional reprogramming that occurs during *S. cerevisiae* velum biofilm development is consistent with a shift from fermentative to oxidative metabolism as glucose is depleted and ethanol accumulates over the 109-day aging period.
 
-The most note worthy change across comparisons is the downregulation of fermentation and glycolysis pathways alongside upregulation of the TCA cycle, oxidative phosphorylation, and ribosomal biogenesis. The velum lifestyle is known to be oxidative: *S. cerevisiae* strains that are capable of velum formation preferentially oxidize ethanol via the glyoxylate cycle and gluconeogenesis under nutrient limiting conditions (Legras et al., 2016; Esteve-Zarzoso et al., 2001). The strong enrichment of **mitochondrial organization**, **mitochondrial translation** and **mitochondrial respiratory chain complex assembly** in upregulated genes of the Mature vs. Early comparison is consistent with published observations of increased mitochondrial content in biofilm-forming flor strains [^20].
+The most note worthy change across comparisons is the downregulation of fermentation and glycolysis pathways alongside upregulation of the TCA cycle, oxidative phosphorylation, and ribosomal biogenesis. The velum lifestyle is known to be oxidative: *S. cerevisiae* strains that are capable of velum formation preferentially oxidize ethanol via the glyoxylate cycle and gluconeogenesis under nutrient limiting conditions [^2] [^5]. The strong enrichment of **mitochondrial organization**, **mitochondrial translation** and **mitochondrial respiratory chain complex assembly** in upregulated genes of the Mature vs. Early comparison is consistent with published observations of increased mitochondrial content in biofilm-forming flor strains [^20].
 
 Among the most consistently upregulated individual genes in thin and mature stages shown in the volcano plots and heatmap is *YIR019C* (*FLO11/MUC1*). *FLO11* is particularly notable as it encodes a GPI-anchored cell surface glycoprotein involved in flocculation, adhesion, making it a master regulator of yeast biofilm formation [^6] [^13]. Its consistent upregulation from Thin through Mature biofilm stages supports the role of Flo11 in maintaining biofilm structural integrity and yeast colony survival. The upregulation of *FLO11* is regulated in part by the cAMP-PKA and MAPK pathways in response to nutrient limitation, consistent with the glucose depletion observed across stages[^15].
 
@@ -237,7 +237,9 @@ The upregulation of **trehalose metabolism** and **response to abiotic stimulus*
 
 [^23]:	Saerens, S. M. G., Verstrepen, K. J., Van Laere, S. D. M., Voet, A. R. D., Van Dijck, P., Delvaux, F. R., & Thevelein, J. M. (2006). The Saccharomyces cerevisiae EHT1 and EEB1 genes encode novel enzymes with medium-chain fatty acid ethyl ester synthesis and hydrolysis capacity. Journal of Biological Chemistry, 281(7), 4446–4456. https://doi.org/10.1074/jbc.M512028200
 
-[^24]: https://www.yeastgenome.org/
+[^24]:  Moreno-García, J., Mauricio, J. C., Moreno, J., & García-Martínez, T. (2017). Differential Proteome Analysis of a Flor Yeast Strain under Biofilm Formation. International Journal of Molecular Sciences, 18(4), 720. https://doi.org/10.3390/ijms18040720
+
+[^25]: https://www.yeastgenome.org/
 
 
 

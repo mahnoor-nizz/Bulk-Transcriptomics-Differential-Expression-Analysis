@@ -90,6 +90,7 @@ Gene Ontology Biological Process (GO BP) and KEGG pathway ORA were performed wit
 ### Overall Data Structure
 
 ![Alt text for the image](https://github.com/mahnoor-nizz/Bulk-Transcriptomics-Differential-Expression-Analysis/blob/main/Figures/PCA2.png)
+
 **Figure 1.** PCA of variance-stabilized counts across nine *S. cerevisiae* biofilm samples. Each point represents one biological replicate; colours indicate biofilm stage (Early = red, Thin = green, Mature = blue). PC1 and PC2 together explain 93% of variance.
 
 ---

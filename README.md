@@ -45,9 +45,9 @@ Raw single-end RNA-seq reads for nine samples (three replicates × three biofilm
 
 ## Additional Metadata from Mardanov et al. 2020
 
-**| Sample designation |Early biofilm | Thin biofilm | Mature biofilm |**
-**| Days from inoculation to sampling | 38 | 83 | 109 |**
-|-------|-----------|---------------|
+| Sample designation |Early biofilm | Thin biofilm | Mature biofilm |
+|--------------------|--------------|--------------|----------------|
+| Days from inoculation to sampling | 38 | 83 | 109 |
 | Ethanol% (v/v) | 12.4 | 10.8 | 9.6 |
 | Volatile acidity (g/l) | 0.2 | 0.2 | 0.1 |
 | Total acidity (g/l) | 7.8 | 7.4 | 7.0 | 

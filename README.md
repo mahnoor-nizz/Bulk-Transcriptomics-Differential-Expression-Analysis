@@ -142,6 +142,12 @@ In the **Mature vs. Thin** comparison, upregulated genes were enriched for **car
 
 ### Functional Enrichment: KEGG Pathway ORA
 
+KEGG pathway ORA confirmed and extended the GO results (Figure 5). Across all three comparisons, the **Ribosome** pathway was the most significantly enriched among upregulated genes (p.adjust < 1×10⁻¹⁷ in Thin vs. Early; p.adjust < 1×10⁻⁹ in Mature vs. Early), consistent with GO results showing cytoplasmic translation enrichment. The **Citrate cycle (TCA cycle)** was enriched in the upregulated genes for both Thin vs. Early and Mature vs. Early comparisons, reflecting the shift toward aerobic respiration.
+
+Among downregulated genes, the **Biosynthesis of secondary metabolites** pathway was consistently and strongly enriched across all comparisons. **Glycolysis / Gluconeogenesis**, **Carbon metabolism**, **Fatty acid metabolism**, and **Biosynthesis of amino acids** were enriched among downregulated genes in the Mature vs. Early comparison, suggesting the slowing of growth, sugar fermentation, and amino acid production. 
+
+In the **Mature vs. Thin** comparison, **Starch and sucrose metabolism** emerged as the top upregulated pathway, while **Biosynthesis of secondary metabolites** remained the top downregulated pathway. The upregulation of carbohydrate storage pathways (including glycogen and trehalose biosynthesis from the GO analysis) at the Mature stage may represent a stress survival strategy under extremely low carbon availability (Francois & Parrou 2001).
+
 
 ![Alt text for the image](https://github.com/mahnoor-nizz/Bulk-Transcriptomics-Differential-Expression-Analysis/blob/main/Figures/KEGG%20ORA.png)
 **Figure 5.** KEGG pathway ORA dot plots for each pairwise comparison. Dot size reflects gene ratio; dot colour indicates adjusted p-value. Up to 10 pathways are shown per cluster.

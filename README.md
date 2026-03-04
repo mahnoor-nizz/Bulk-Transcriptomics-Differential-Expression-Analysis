@@ -108,6 +108,8 @@ DESeq2 identified substantial transcriptional remodelling across all three pairw
 | Mature vs. Thin | 1,319 | 731 | 588 |
 
 
+The largest number of DEGs was observed in the Mature vs. Early comparison (1,872 genes; ~31% of the detected transcriptome), consistent with the two stages being sampled at the greatest temporal distance (38 vs. 109 days post-inoculation; Mardanov et al., 2020). Volcano plots confirmed both the magnitude and statistical significance of these changes (Figure 2). In the Mature vs. Early comparison, genes *YJL052W*, *YGL055W*, *YGR087C*, and *YHR094C* were among the most significantly downregulated (navy, left of dashed lines), while *YIR019C*, *YNR073C*, *YNR072W*, and *YNR071C* were among the most significantly upregulated (maroon, right of dashed lines). In the Thin vs. Early comparison, *YGR087C* and *YHR094C* showed high downregulation significance, while *YCR105W*, *YKR097W*, and *YNR073C* were top upregulated genes. The Mature vs. Thin comparison showed fewer extreme outliers, with *YJR152W* and *YGL055W* most significantly downregulated and *YBR117C*, *YPR127W*, *YDR085C*, and *YEL070W* most significantly upregulated.
+
 ![Alt text for the image](https://github.com/mahnoor-nizz/Bulk-Transcriptomics-Differential-Expression-Analysis/blob/main/Figures/volcano%20plots.png)
 **Figure 2.** Volcano plots for each pairwise comparison. Each point is a gene; maroon = significantly upregulated (log₂FC > 1, adjusted p < 0.05), navy = significantly downregulated, gray = not significant. Dashed vertical lines indicate |log₂FC| = 1. Top 5 up- and downregulated genes are labelled by adjusted p-value.
 

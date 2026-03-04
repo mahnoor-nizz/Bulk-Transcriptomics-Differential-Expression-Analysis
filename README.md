@@ -42,6 +42,23 @@ Raw single-end RNA-seq reads for nine samples (three replicates × three biofilm
 | Mature | IL30 | SRR10551658 |
 | Mature | IL31 | SRR10551657 |
 
+
+## Additional Metadata from Mardanov et al. 2020
+
+**| Sample designation |Early biofilm | Thin biofilm | Mature biofilm |**
+**| Days from inoculation to sampling | 38 | 83 | 109 |**
+|-------|-----------|---------------|
+| Ethanol% (v/v) | 12.4 | 10.8 | 9.6 |
+| Volatile acidity (g/l) | 0.2 | 0.2 | 0.1 |
+| Total acidity (g/l) | 7.8 | 7.4 | 7.0 | 
+| Aldehydes (mg/l) | 382.8 | 531.3 | 668.8 |
+| Acetals (mg/l) | 147.2 | 253.7 | 280.3 |
+| pH | 3.6 | 3.6 | 3.6 |
+| Glucose (g/l) | 0.2 | 0.1 | <0.1 |
+| Fructose (g/l) | <0.1 | <0.1 | <0.1 | 
+| Oligosaccharides (g/l) | 0.3 | 0.2 | 0.2 |
+| Glycerol (g/l) | 8.5 | 7.9 | 6.8 |
+
 ### Download and Quality Control
 
 Reads were downloaded from the NCBI SRA using `fasterq-dump` from the SRA Toolkit v3.0.9 and compressed with `gzip`. Quality control was assessed with **FastQC** v0.12.1 (Andrews, 2010).
@@ -163,8 +180,6 @@ In the **Mature vs. Thin** comparison, **Starch and sucrose metabolism** emerged
 
 Andrews, S. (2010). FastQC: A quality control tool for high throughput sequence data. Babraham Bioinformatics. https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-Boyle, A. P., Davis, S., Bhatt, D. L., & et al. (2020). Optimization and evaluation of trimming algorithms for RNA-seq data. *NAR Genomics and Bioinformatics*, 2(3), lqaa068. https://doi.org/10.1093/nargab/lqaa068
-
 Esteve-Zarzoso, B., Peris-Torán, M. J., García-Maiquez, E., Uruburu, F., & Querol, A. (2001). Yeast population dynamics during the fermentation and biological aging of Sherry wines. *Applied and Environmental Microbiology*, 67(5), 2056–2061.
 
 Francois, J., & Parrou, J. L. (2001). Reserve carbohydrates metabolism in the yeast *Saccharomyces cerevisiae*. *FEMS Microbiology Reviews*, 25(1), 125–145.
@@ -204,14 +219,6 @@ Yu, G. (2022). enrichplot: Visualization of functional enrichment result. R pack
 Zara, G., Budroni, M., Mannazzu, I., & Zara, S. (2010). Air-liquid biofilm formation is dependent on ammonium depletion in a *Saccharomyces cerevisiae* flor strain. *FEMS Yeast Research*, 10(5), 582–586.
 
 Zhu, A., Ibrahim, J. G., & Love, M. I. (2019). Heavy-tailed prior distributions for sequence count data: Removing the noise and preserving large differences. *Bioinformatics*, 35(12), 2084–2092.
-
-
-
-
-
-
-
-
 
 
 

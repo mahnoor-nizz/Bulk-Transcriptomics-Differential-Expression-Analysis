@@ -44,7 +44,7 @@ Raw single-end RNA-seq reads for nine samples (three replicates × three biofilm
 
 ### Download and Quality Control
 
-Reads were downloaded from the NCBI SRA using `fasterq-dump` from the SRA Toolkit (v3.x) and compressed with `gzip`. Quality control was assessed with **FastQC** v0.12.1 (Andrews, 2010).
+Reads were downloaded from the NCBI SRA using `fasterq-dump` from the SRA Toolkit v3.0.9 and compressed with `gzip`. Quality control was assessed with **FastQC** v0.12.1 (Andrews, 2010).
 
 ### Reference Transcriptome and Indexing
 
@@ -52,16 +52,9 @@ The *S. cerevisiae* reference transcriptome (GCF_000146045.2, R64 assembly) was 
 
 ### Quantification
 
-Transcript-level abundance was quantified for each sample using Salmon's quasi-mapping:
+Transcript-level abundance was quantified for each sample using Salmon:
 
 ```bash
-INDEX=~/scratch/BINF6110/.../data/salmon_index
-QUANTS=~/scratch/BINF6110/.../data/quants
-
-SAMPLES=(SRR10551665 SRR10551664 SRR10551663
-         SRR10551662 SRR10551661 SRR10551660
-         SRR10551659 SRR10551658 SRR10551657)
-
 for SAMPLE in "${SAMPLES[@]}"; do
     salmon quant \
         -i $INDEX \
@@ -75,13 +68,22 @@ done
 
 ### Differential Expression Analysis in R
 
+Salmon output was imported into R using **tximport** v1.38.2  (Soneson et al., 2015). A transcript-to-gene mapping was generated from the R64 GTF file using `makeTxDbFromGFF` from the **GenomicFeatures** v1.62.0 package (Lawrence et al., 2013). Samples were modelled with a single-factor design (`~stage`) in **DESeq2** v1.50.2 (Love et al., 2014), with `Early` as the reference level. To obtain the Mature vs. Thin contrast, the reference was relevelled to `Thin` and DESeq2 was re-run. Pairwise contrasts were extracted with `results()` at α = 0.05. Log-fold change shrinkage was applied with **apeglm** using `lfcShrink()` (Zhu et al., 2018). DEGs were defined as genes with |log₂FC| > 1 and adjusted p-value < 0.05 (Benjamini–Hochberg correction).
+
+```r
+dds <- DESeqDataSetFromTximport(txi, sample_info, ~stage)
+dds <- DESeq(dds)
+
+LFC_tve <- lfcShrink(dds, coef = "stage_Thin_vs_Early", type = "apeglm")
+```
 
 ### Visualization
 
+**PCA** was performed on variance-stabilized counts (VST) using `plotPCA` from DESeq2. **Volcano plots** were generated with **ggplot2** v4.0.2 (Wickham, 2016) and **ggrepel** v0.9.7, labelling the top 5 up- and down-regulated genes (by adjusted p-value) in each comparison. A **heatmap** of the 30 most significant genes (minimum adjusted p-value across all three comparisons) was produced with **pheatmap** v1.0.13  using row-scaled VST counts.
 
 ### Functional Enrichment
 
-
+Gene Ontology Biological Process (GO BP) and KEGG pathway ORA were performed with `compareCluster` from **clusterProfiler** v4.18.4 (Wu et al., 2021), testing upregulated and downregulated DEGs separately against the background of all expressed genes. GO results were simplified with a Jaccard similarity cutoff of 0.7 using `clusterProfiler::simplify`. Dot plots showing the top 10 enriched terms per cluster were generated with `dotplot` from **enrichplot** v1.30.4 (Yu, 2022). KEGG queries used organism code `sce` (*S. cerevisiae*). Multiple testing correction was performed using the Benjamini–Hochberg method (p.adjust < 0.05, q-value < 0.2).
 
 ## Results
 

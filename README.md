@@ -117,6 +117,7 @@ The largest number of DEGs was observed in the Mature vs. Early comparison (1,87
 
 ### Heatmap of Top Differentially Expressed Genes
 
+Hierarchical clustering of the 30 most significant genes (ranked by minimum adjusted p-value across all comparisons) revealed two dominant expression modules (Figure 3). One cluster of genes, from *YOR247W* down to *YPL106C* was progressively upregulated from Early to Mature, reaching peak expression in the Mature stage. A second cluster, from *YJR152W* down to *YJL212C* showed the inverse pattern, with high expression in Early biofilm that declined through Thin and Mature stages. A third smaller cluster, including *YPR127W*, YBR117C*, and YDR085C* were specifically upregulated in the Mature stage relative to both Early and Thin. Finally, three genes, *YKR097W*, *YDL243C*, and especially *YCR105W*, were significantly upregulated in the thin stage.  *YCR105W* is especially interesting as it is only upregulated at the thin stage. 
 
 ![Alt text for the image](https://github.com/mahnoor-nizz/Bulk-Transcriptomics-Differential-Expression-Analysis/blob/main/Figures/Heatmap.png)
 **Figure 3.** Heatmap of the 30 most statistically significant DEGs. Expression values are row-scaled variance-stabilized counts (VST). Column annotations indicate biofilm stage (Early = green, Thin = orange, Mature = dark red). Rows are clustered by hierarchical clustering; columns are ordered by stage.

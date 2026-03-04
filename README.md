@@ -175,63 +175,69 @@ In the **Mature vs. Thin** comparison, **Starch and sucrose metabolism** emerged
 
 This analysis reveals that the coordinated and progressive transcriptional reprogramming that occurs during *S. cerevisiae* velum biofilm development is consistent with a shift from fermentative to oxidative metabolism as glucose is depleted and ethanol accumulates over the 109-day aging period.
 
-The most note worthy change across comparisons is the downregulation of fermentation and glycolysis pathways alongside upregulation of the TCA cycle, oxidative phosphorylation, and ribosomal biogenesis. The velum lifestyle is known to be oxidative: *S. cerevisiae* strains that are capable of velum formation preferentially oxidize ethanol via the glyoxylate cycle and gluconeogenesis under nutrient limiting conditions (Legras et al., 2016; Esteve-Zarzoso et al., 2001). The strong enrichment of **mitochondrial organization**, **mitochondrial translation** and **mitochondrial respiratory chain complex assembly** in upregulated genes of the Mature vs. Early comparison is consistent with published observations of increased mitochondrial content in biofilm-forming flor strains (Zara et al., 2010).
+The most note worthy change across comparisons is the downregulation of fermentation and glycolysis pathways alongside upregulation of the TCA cycle, oxidative phosphorylation, and ribosomal biogenesis. The velum lifestyle is known to be oxidative: *S. cerevisiae* strains that are capable of velum formation preferentially oxidize ethanol via the glyoxylate cycle and gluconeogenesis under nutrient limiting conditions (Legras et al., 2016; Esteve-Zarzoso et al., 2001). The strong enrichment of **mitochondrial organization**, **mitochondrial translation** and **mitochondrial respiratory chain complex assembly** in upregulated genes of the Mature vs. Early comparison is consistent with published observations of increased mitochondrial content in biofilm-forming flor strains [^20].
 
-Among the most consistently upregulated individual genes in thin and mature stages shown in the volcano plots and heatmap is *YIR019C* (*FLO11/MUC1*). *FLO11* is particularly notable as it encodes a GPI-anchored cell surface glycoprotein involved in flocculation, adhesion, making it a master regulator of yeast biofilm formation (Reynolds & Fink, 2001; Lo & Dranginis, 1998). Its consistent upregulation from Thin through Mature biofilm stages supports the role of Flo11 in maintaining biofilm structural integrity and yeast colony survival. The upregulation of *FLO11* is regulated in part by the cAMP-PKA and MAPK pathways in response to nutrient limitation, consistent with the glucose depletion observed across stages (Verstrepen & Klis, 2006).
+Among the most consistently upregulated individual genes in thin and mature stages shown in the volcano plots and heatmap is *YIR019C* (*FLO11/MUC1*). *FLO11* is particularly notable as it encodes a GPI-anchored cell surface glycoprotein involved in flocculation, adhesion, making it a master regulator of yeast biofilm formation [^6,^13]. Its consistent upregulation from Thin through Mature biofilm stages supports the role of Flo11 in maintaining biofilm structural integrity and yeast colony survival. The upregulation of *FLO11* is regulated in part by the cAMP-PKA and MAPK pathways in response to nutrient limitation, consistent with the glucose depletion observed across stages[^15].
 
-Other notable genes are *YHR094C*(*HXT1/HOR4*), and *YPL095C*(*EEB1*), which the heatmap shows are significantly upregulated during the early stage. *HXT1* is a glucose transporter whose expression is induced in the presence of glucose and repressed when glucose is limiting, and *EEB1* is responsible for the major part of medium-chain fatty acid ethyl ester biosynthesis during fermentation.
+Other notable genes are *YHR094C*(*HXT1/HOR4*), and *YPL095C*(*EEB1*), which the heatmap shows are significantly upregulated during the early stage. *HXT1* is a glucose transporter whose expression is induced in the presence of glucose and repressed when glucose is limiting, and *EEB1* is responsible for the major part of medium-chain fatty acid ethyl ester biosynthesis during fermentation[^24].
 
-Among the most significantly downregulated genes in mature vs early and mature vs thin are *YJL052W* (*TDH1*), and *YGL055W* (*OLE1*). *TDH1* encodes glyceraldehyde-3-phosphate dehydrogenase, a key glycolytic enzyme, whose downregulation is directly consistent with reduced glycolytic flux.(mcalister) *OLE1* encodes a fatty acid desaturase and its downregulation in Mature biofilm may reflect altered membrane lipid composition under ethanol stress (Nakagawa et al., 2002). The strong and consistent enrichment of **Biosynthesis of secondary metabolites** among downregulated genes likely reflects coordinated reduction of anabolic pathways under carbon and energy limitation.
+Among the most significantly downregulated genes in mature vs early and mature vs thin are *YJL052W* (*TDH1*), and *YGL055W* (*OLE1*). *TDH1* encodes glyceraldehyde-3-phosphate dehydrogenase, a key glycolytic enzyme, whose downregulation is directly consistent with reduced glycolytic flux[^10]. *OLE1* encodes a fatty acid desaturase and its downregulation in Mature biofilm may reflect altered membrane lipid composition under ethanol stress[^11]. The strong and consistent enrichment of **Biosynthesis of secondary metabolites** among downregulated genes likely reflects coordinated reduction of anabolic pathways under carbon and energy limitation.
 
-The upregulation of **trehalose metabolism** and **response to abiotic stimulus** in the Mature vs. Thin comparison is consistent with the known role of trehalose as a stress protectant in yeast, particularly under ethanol and oxidative stress (Francois & Parrou, 2001). Together, these results suggest that Mature biofilm cells have substantially rewired their metabolism to survive a hostile environment characterized by low glucose, high ethanol (~9.6% v/v), elevated acetaldehyde (~669 mg/L), and oxidative conditions at the air-liquid interface (Mardanov et al., 2020).
+The upregulation of **trehalose metabolism** and **response to abiotic stimulus** in the Mature vs. Thin comparison is consistent with the known role of trehalose as a stress protectant in yeast, particularly under ethanol and oxidative stress[^3]. Together, these results suggest that Mature biofilm cells have substantially rewired their metabolism to survive a hostile environment characterized by low glucose, high ethanol (~9.6% v/v), elevated acetaldehyde (~669 mg/L), and oxidative conditions at the air-liquid interface[^9].
 
-**Limitations:** This study used only three replicates per stage, which limits statistical power, particularly for low-abundance transcripts. No quality trimming was applied prior to quantification, which is consistent with current recommendations for gene expression studies (Williams et al., 2016; Boyle et al., 2020), but trimming would remain important for transcript assembly. Future studies could incorporate a Likelihood Ratio Test (LRT) to model the full developmental time course rather than pairwise contrasts, which would better capture continuously varying expression trajectories (Love et al., 2014).
+**Limitations:** This study used only three replicates per stage, which limits statistical power, particularly for low-abundance transcripts. No quality trimming was applied prior to quantification, which is consistent with current recommendations for gene expression studies [^8], but trimming would remain important for transcript assembly. Future studies could incorporate a Likelihood Ratio Test (LRT) to model the full developmental time course rather than pairwise contrasts, which would better capture continuously varying expression [^7].
 
 ---
 
 ## References
 
-Andrews, S. (2010). FastQC: A quality control tool for high throughput sequence data. Babraham Bioinformatics. https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+[^1]:	Andrews, S. (2010). FastQC: A quality control tool for high throughput sequence data. Babraham Bioinformatics. https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-Esteve-Zarzoso, B., Peris-Torán, M. J., García-Maiquez, E., Uruburu, F., & Querol, A. (2001). Yeast population dynamics during the fermentation and biological aging of Sherry wines. *Applied and Environmental Microbiology*, 67(5), 2056–2061.
+[^2]:	Esteve-Zarzoso, B., Peris-Torán, M. J., García-Maiquez, E., Uruburu, F., & Querol, A. (2001). Yeast population dynamics during the fermentation and biological aging of Sherry wines. Applied and Environmental Microbiology, 67(5), 2056–2061. https://doi.org/10.1128/AEM.67.5.2056-2061.2001
 
-Francois, J., & Parrou, J. L. (2001). Reserve carbohydrates metabolism in the yeast *Saccharomyces cerevisiae*. *FEMS Microbiology Reviews*, 25(1), 125–145.
+[^3]:	Francois, J., & Parrou, J. L. (2001). Reserve carbohydrates metabolism in the yeast Saccharomyces cerevisiae. FEMS Microbiology Reviews, 25(1), 125–145. https://doi.org/10.1111/j.1574-6976.2001.tb00574.x
 
-Lawrence, M., Huber, W., Pagès, H., Aboyoun, P., Carlson, M., Gentleman, R., Morgan, M. T., & Carey, V. J. (2013). Software for computing and annotating genomic ranges. *PLOS Computational Biology*, 9(8), e1003118.
+[^4]:	Lawrence, M., Huber, W., Pagès, H., Aboyoun, P., Carlson, M., Gentleman, R., Morgan, M. T., & Carey, V. J. (2013). Software for computing and annotating genomic ranges. PLOS Computational Biology, 9(8), e1003118. https://doi.org/10.1371/journal.pcbi.1003118
 
-Legras, J. L., Moreno-Garcia, J., Zara, S., Zara, G., Garcia-Martinez, T., Mauricio, J. C., Fidalgo, C., Gonzalez, P., Aranda, A., & Mas, A. (2016). Flor yeast: New perspectives beyond wine aging. *Frontiers in Microbiology*, 7, 503.
+[^5]:	Legras, J. L., Moreno-Garcia, J., Zara, S., Zara, G., Garcia-Martinez, T., Mauricio, J. C., Fidalgo, C., Gonzalez, P., Aranda, A., & Mas, A. (2016). Flor yeast: New perspectives beyond wine aging. Frontiers in Microbiology, 7, 503. https://doi.org/10.3389/fmicb.2016.00503
 
-Lo, W. S., & Dranginis, A. M. (1998). The cell surface flocculin Flo11 is required for pseudohyphae formation and invasion by *Saccharomyces cerevisiae*. *Molecular Biology of the Cell*, 9(1), 161–171.
+[^6]:	Lo, W. S., & Dranginis, A. M. (1998). The cell surface flocculin Flo11 is required for pseudohyphae formation and invasion by Saccharomyces cerevisiae. Molecular Biology of the Cell, 9(1), 161–171. https://doi.org/10.1091/mbc.9.1.161
 
-Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. *Genome Biology*, 15(12), 550.
+[^7]:	Love, M. I., Huber, W., & Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biology, 15(12), 550. https://doi.org/10.1186/s13059-014-0550-8
 
-Mardanov, A. V., Beletsky, A. V., Ravin, N. V., Petrov, A. I., Откидач, Е. И., Golubev, W. I., & Morozova, V. V. (2020). Transcriptome of the *Saccharomyces cerevisiae* velum community during biological wine aging. *Frontiers in Microbiology*, 11, 538. https://doi.org/10.3389/fmicb.2020.00538
+[^8]:	Liao, Y., & Shi, W. (2020). Read trimming is not required for mapping and quantification of RNA-seq reads at the gene level. NAR Genomics and Bioinformatics, 2(3), lqaa068. https://doi.org/10.1093/nargab/lqaa068
 
-Nakagawa, Y., Sakumoto, N., Kaneko, Y., & Harashima, S. (2002). *Mga2p* is a putative sensor for low temperature and oxygen to induce OLE1 transcription in *Saccharomyces cerevisiae*. *Biochemical and Biophysical Research Communications*, 291(3), 707–713.
+[^9]:	Mardanov, A. V., Beletsky, A. V., Ravin, N. V., Petrov, A. I., Golubev, W. I., & Morozova, V. V. (2020). Transcriptome of the Saccharomyces cerevisiae velum community during biological wine aging. Frontiers in Microbiology, 11, 538. https://doi.org/10.3389/fmicb.2020.00538
 
-Patro, R., Duggal, G., Love, M. I., Irizarry, R. A., & Kingsford, C. (2017). Salmon provides fast and bias-aware quantification of transcript expression. *Nature Methods*, 14(4), 417–419.
+[^10]:	McAlister, L., & Holland, M. J. (1985). Isolation and characterization of yeast strains carrying mutations in the glyceraldehyde-3-phosphate dehydrogenase genes. Journal of Biological Chemistry, 260(28), 15013–15018.
 
-Reynolds, T. B., & Fink, G. R. (2001). Bakers' yeast, a model for fungal biofilm formation. *Science*, 291(5505), 878–881.
+[^11]:	Nakagawa, Y., Sakumoto, N., Kaneko, Y., & Harashima, S. (2002). Mga2p is a putative sensor for low temperature and oxygen to induce OLE1 transcription in Saccharomyces cerevisiae. Biochemical and Biophysical Research Communications, 291(3), 707–713. https://doi.org/10.1006/bbrc.2002.6507
 
-Soneson, C., Love, M. I., & Robinson, M. D. (2015). Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences. *F1000Research*, 4, 1521.
+[^12]:	Patro, R., Duggal, G., Love, M. I., Irizarry, R. A., & Kingsford, C. (2017). Salmon provides fast and bias-aware quantification of transcript expression. Nature Methods, 14(4), 417–419. https://doi.org/10.1038/nmeth.4197
 
-Srivastava, A., Malik, L., Sarkar, H., Zakeri, M., Soneson, C., Love, M. I., Kingsford, C., & Patro, R. (2020). Alignment and mapping methodology influence transcript abundance estimation. *Genome Biology*, 21(1), 239.
+[^13]:	Reynolds, T. B., & Fink, G. R. (2001). Bakers' yeast, a model for fungal biofilm formation. Science, 291(5505), 878–881. https://doi.org/10.1126/science.291.5505.878
 
-Verstrepen, K. J., & Klis, F. M. (2006). Flocculation, adhesion and biofilm formation in yeasts. *Molecular Microbiology*, 60(1), 5–15.
+[^14]:	Soneson, C., Love, M. I., & Robinson, M. D. (2015). Differential analyses for RNA-seq: Transcript-level estimates improve gene-level inferences. F1000Research, 4, 1521. https://doi.org/10.12688/f1000research.7563.2
 
-Wang, Z., Gerstein, M., & Snyder, M. (2009). RNA-Seq: A revolutionary tool for transcriptomics. *Nature Reviews Genetics*, 10(1), 57–63.
+[^15]:	Verstrepen, K. J., & Klis, F. M. (2006). Flocculation, adhesion and biofilm formation in yeasts. Molecular Microbiology, 60(1), 5–15. https://doi.org/10.1111/j.1365-2958.2006.05072.x
 
-Wickham, H. (2016). *ggplot2: Elegant Graphics for Data Analysis*. Springer-Verlag New York.
+[^16]:	Wang, Z., Gerstein, M., & Snyder, M. (2009). RNA-Seq: A revolutionary tool for transcriptomics. Nature Reviews Genetics, 10(1), 57–63. https://doi.org/10.1038/nrg2484
 
-Williams, C. R., Baccarella, A., Parrish, J. Z., & Kim, C. C. (2016). Trimming of sequence reads alters RNA-Seq gene expression estimates. *BMC Bioinformatics*, 17, 103.
+[^17]:	Wickham, H. (2016). ggplot2: Elegant graphics for data analysis. Springer-Verlag.
 
-Wu, T., Hu, E., Xu, S., Chen, M., Guo, P., Dai, Z., Feng, T., Zhou, L., Tang, W., Zhan, L., Fu, X., Liu, S., Bo, X., & Yu, G. (2021). clusterProfiler 4.0: A universal enrichment tool for interpreting omics data. *Innovation*, 2(3), 100141.
+[^18]:	Wu, T., Hu, E., Xu, S., Chen, M., Guo, P., Dai, Z., Feng, T., Zhou, L., Tang, W., Zhan, L., Fu, X., Liu, S., Bo, X., & Yu, G. (2021). clusterProfiler 4.0: A universal enrichment tool for interpreting omics data. Innovation, 2(3), 100141. https://doi.org/10.1016/j.xinn.2021.100141
 
-Yu, G. (2022). enrichplot: Visualization of functional enrichment result. R package version 1.16.2. https://github.com/YuLab-SMU/enrichplot
+[^19]:	Yu, G. (2022). enrichplot: Visualization of functional enrichment result (R package version 1.16.2). https://github.com/YuLab-SMU/enrichplot
 
-Zara, G., Budroni, M., Mannazzu, I., & Zara, S. (2010). Air-liquid biofilm formation is dependent on ammonium depletion in a *Saccharomyces cerevisiae* flor strain. *FEMS Yeast Research*, 10(5), 582–586.
+[^20]:	Zara, G., Budroni, M., Mannazzu, I., & Zara, S. (2010). Air-liquid biofilm formation is dependent on ammonium depletion in a Saccharomyces cerevisiae flor strain. FEMS Yeast Research, 10(5), 582–586. https://doi.org/10.1111/j.1567-1364.2010.00634.x
 
-Zhu, A., Ibrahim, J. G., & Love, M. I. (2019). Heavy-tailed prior distributions for sequence count data: Removing the noise and preserving large differences. *Bioinformatics*, 35(12), 2084–2092.
+[^21]:	Zhu, A., Ibrahim, J. G., & Love, M. I. (2019). Heavy-tailed prior distributions for sequence count data: Removing the noise and preserving large differences. Bioinformatics, 35(12), 2084–2092. https://doi.org/10.1093/bioinformatics/bty895
+
+[^22]:	Ozcan, S., & Johnston, M. (1999). Function and regulation of the Saccharomyces cerevisiae HXT family of sugar transporters. Microbiology and Molecular Biology Reviews, 63(3), 554–569. https://doi.org/10.1128/MMBR.63.3.554-569.1999  
+
+[^23]:	Saerens, S. M. G., Verstrepen, K. J., Van Laere, S. D. M., Voet, A. R. D., Van Dijck, P., Delvaux, F. R., & Thevelein, J. M. (2006). The Saccharomyces cerevisiae EHT1 and EEB1 genes encode novel enzymes with medium-chain fatty acid ethyl ester synthesis and hydrolysis capacity. Journal of Biological Chemistry, 281(7), 4446–4456. https://doi.org/10.1074/jbc.M512028200
+
+[^24]: https://www.yeastgenome.org/
 
 
 

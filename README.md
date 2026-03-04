@@ -13,7 +13,7 @@ BINF 6110 Assignment 2.  Differential expression analysis, functional annotation
 
 ## Introduction
 
-*Saccharomyces cerevisiae* is a yeast strain that produces a surface biofilm known as a velum during the biological aging of certain wines, particularly sherry wines. This biofilm develops on wine surfaces that are open to the air and play a crucial role in shaping the properties of the final product by consuming ethanol and producing acetaldehyde and acetals under oxidative, nutrient-deficient conditions [^9][^5].
+*Saccharomyces cerevisiae* is a yeast strain that produces a surface biofilm known as a velum during the aging of certain wines, particularly sherry wines. This biofilm develops on wine surfaces that are open to the air and play a crucial role in shaping the properties of the final product by consuming ethanol and producing acetaldehyde and acetals under oxidative, nutrient-deficient conditions [^9][^5].
 
 The velum undergoes distinct morphological stages, **Early**, **Thin**, and **Mature**, each associated with different metabolic demands. Understanding the transcriptional basis of these transitions is valuable both for wine making and for research into *S. cerevisiae* stress adaptation, carbon source switching, and biofilm architecture. As glucose is progressively depleted from Early to Mature biofilm[^9], cells are expected to shift from fermentative to oxidative metabolism, a transition controlled by large-scale changes in gene expression.
 
